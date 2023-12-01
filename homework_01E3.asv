@@ -30,18 +30,13 @@ for i = 1:size(xWin, 2)
 
     %we then calculate the fundamental frequency (the function is defined
     %at the end of this script)
-    f_0 = findF0(r_xx,zcra,nWin); %f_0=80Hz
-    %f_0 = findF0(r_xx_norm,zcra,nWin); %f_0 is also 80Hz
-    %f_0 = findF0(r_xx_norm,zcra_norm,nWin); %f_0=40Hz (which does not
-    %really make sense
-    
-    %% NEW IDEA
+    f_0 = findF0(r_xx,zcra,nWin);
+    %f_0 = findF0(r_xx_norm,zcra_norm,nWin);
+    %% NEW
     % Calculate the lag corresponding to the fundamental frequency
-    tau_f0 = nWin / f_0;
+    tau_f0 = xWinI / f_0;
     % Calculate periodicity using the normalized autocorrelation at tau_f0
-    %p_0 = r_xx_norm(round(tau_f0)+1); % Adding 1 because indices start from 1
-    p_0 = 1/tau_f0;
-
+    p_0 = r_xx_norm(round(tau_f0)+1); % Adding 1 because indices start from 1
     %%
     %f_00 = findF0(r_xx,zcra,fs);
 
